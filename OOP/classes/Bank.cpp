@@ -9,8 +9,9 @@ private:
     string accountName;
 
 public:
-    BankAccount() {}
-    BankAccount(int accNumber, double initialBalance) : accountNumber(accNumber), balance(initialBalance) {}
+    BankAccount() {};
+    BankAccount(int accNumber, double initialBalance) : accountNumber(accNumber), balance(initialBalance) {};
+    BankAccount(int accNumber, double initialBalance, string accName) : accountNumber(accNumber), balance(initialBalance), accountName(accName) {};
 
     // Member function to deposit money into the account
     void deposit(double amount)
@@ -49,12 +50,15 @@ public:
     {
         accountName = name;
     }
+    string getName () {
+        return accountName;
+    }
 };
 
 namespace transactions
 {
     int depositAmount, withdrawAmount;
-    BankAccount myAccount(12345, 0);
+    BankAccount myAccount(12345, 0, "Kevin");
 
     void getBalance()
     {
@@ -82,13 +86,7 @@ namespace transactions
 int main()
 {
     int choice;
-    string accName;
-
-    cout << "Enter your name: " << endl;
-    cin >> accName;
-    BankAccount account;
-    account.setName(accName);
-
+ 
     cout << "Options" << endl;
     cout << "1.Deposit into your account" << endl;
     cout << "2.Withdraw from your account" << endl;
