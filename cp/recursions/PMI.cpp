@@ -28,7 +28,7 @@ void print2(int n)
 }
 int main()
 {
-  cin.getline();
+  // cin.getline();
   print2(5);
   return 0;
 }
