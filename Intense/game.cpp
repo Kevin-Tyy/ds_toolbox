@@ -1,113 +1,63 @@
 #include <iostream>
-#include <string>
 #include <vector>
-#include <cstdlib>
 #include <ctime>
-#include <ctype.h>
-
-
+#include <cstdlib>
 
 using namespace std;
 
-// Function to select a random word from a category
-string selectRandomWord(vector<string> &categoryWords)
-{
-    int randomIndex = rand() % categoryWords.size();
-    return categoryWords[randomIndex];
+string selectRandomWord(const vector<string> &categoryWords) {
+    return categoryWords[rand() % categoryWords.size()];
 }
 
-// Function to display the word with guessed letters
-void displayWord(const string &word, const string guessedLetters)
-{
-    for (char letter : word)
-    {
-        if (guessedLetters.find(letter) != string::npos)
-        {
-            cout << letter;
-        }
-        else
-        {
-            cout << '_';
-        }
-    }
+void displayWord(const string &word, const string &guessedLetters) {
+    for (char letter : word) cout << (guessedLetters.find(letter) != string::npos ? letter : '_');
     cout << endl;
 }
 
-int main()
-{
-    srand(time(0)); // Seed for random number generation
+int main() {
+    srand(time(0));
 
-    // what is a vector? - a vector is an array like data structure that can shrink or grow depending on the number of its elements
+    vector<string> animals = {"elephant", "monkey", "lion", "giraffe"};
+    vector<string> teams = {"arsenal", "chelsea", "liverpool", "napoli"};
 
-    vector<string> animals = {"elephant", "tiger", "lion", "giraffe"};
-    vector<string> teams = {"lakers", "yankees", "warriors", "packers"};
-
-    // Ask the user to select a category
-
-    cout << "Welcome to the Word Guessing Game!" << endl;
-    cout << "Choose a category (1 - Animals, 2 - Teams): ";
+    cout << "Welcome to the Word Guessing Game!\nChoose a category (1 - Animals, 2 - Teams): ";
     int categoryChoice;
     cin >> categoryChoice;
 
-    vector<string> selectedCategory;
-    if (categoryChoice == 1)
-    {
-        selectedCategory = animals;
-    }
-    else if (categoryChoice == 2)
-    {
-        selectedCategory = teams;
-    }
-    // Add more category choices and handling as needed
-
+    vector<string> selectedCategory = (categoryChoice == 1) ? animals : teams;
     string selectedWord = selectRandomWord(selectedCategory);
     string guessedLetters;
-    int chances = 6; // You can adjust the number of chances
+    int chances = 6;
 
-    while (chances > 0)
-    {
-        cout << "Chances left: " << chances << endl;
+    while (chances > 0) {
+        cout << "Chances left: " << chances << "\n";
         displayWord(selectedWord, guessedLetters);
 
         cout << "Guess a letter or type 'exit' to quit: ";
         string guess;
         cin >> guess;
-        if (guess.length() != 1 || !isalpha(guess[0]))
-        {
-            cout << "Please enter a valid letter." << endl;
-        }
-        else
-        {
+        if (guess.length() != 1 || !isalpha(guess[0])) {
+            cout << "Please enter a valid letter.\n";
+        } else {
             char letter = tolower(guess[0]);
-            if (guessedLetters.find(letter) != string::npos)
-            {
-                cout << "You've already guessed this letter." << endl;
-            }
-            else if (selectedWord.find(letter) != string::npos)
-            {
-                cout << "Correct guess!" << endl;
+            if (guessedLetters.find(letter) != string::npos) {
+                cout << "You've already guessed this letter.\n";
+            } else {
+                cout << (selectedWord.find(letter) != string::npos ? "Correct guess!\n" : "Incorrect guess. Try again.\n");
                 guessedLetters += letter;
-            }
-            else
-            {
-                cout << "Incorrect guess. Try again." << endl;
-                guessedLetters += letter;
-                chances--;
+                chances -= (selectedWord.find(letter) == string::npos);
             }
         }
 
-        if (selectedWord.find_first_not_of(guessedLetters) == string::npos)
-        {
-            cout << "Congratulations! You've guessed the word: " << selectedWord << endl;
+        if (selectedWord.find_first_not_of(guessedLetters) == string::npos) {
+            cout << "Congratulations! You've guessed the word: " << selectedWord << "\n";
             break;
         }
     }
 
-    if (chances == 0)
-    {
-        cout << "You've run out of chances. The word was: " << selectedWord << endl;
+    if (chances == 0) {
+        cout << "You've run out of chances. The word was: " << selectedWord << "\n";
     }
-
 
     return 0;
 }
