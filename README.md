@@ -45,7 +45,7 @@ We welcome contributions to this repository. Please submit pull requests with ne
 This repository is licensed under the MIT License.
 
 ```
-  #include <iostream>
+#include <iostream>
 #include <algorithm>
 #include <iterator>
 #include <string>
