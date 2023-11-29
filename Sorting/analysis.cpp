@@ -82,8 +82,8 @@ int main(){
 
     endTime = getTimeInMicroSeconds();
 
-    // cout<<"Merge sort n = "<<n<<" time = "<<endTime-startTime<<endl;
-    cout<<"Selection sort n = "<<n<<" time = "<<endTime-startTime<<endl;
+    cout<<"Merge sort n = "<<n<<" time = "<<endTime-startTime<<endl;
+    // cout<<"Selection sort n = "<<n<<" time = "<<endTime-startTime<<endl;
     delete []arr;
   }
   return 0;
