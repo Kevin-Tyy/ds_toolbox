@@ -30,6 +30,9 @@ int main()
         check = 1;
       }
       counter++;
+      if(check==0){
+        break;
+      }
     }
   }
   std::cout

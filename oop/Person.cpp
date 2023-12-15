@@ -12,17 +12,21 @@ public:
   // {
   //   strcpy(name, newName);
   // }
-  Person(char *name){
-    this->name = name;
-  }
-  void getDetails()
-  {
-    cout << "Name is " << name << endl;
+
+  // void getDetails()
+  // {
+  //   cout << "Name is " << name << endl;
+  // }
+  void printSomething () {
+    cout << "Boo!"
   }
 };
 
 int main() {
-  Person person1("Kevin");
-  person1.getDetails();
+  // Person person1("Kevin");
+  // person1.getDetails();
+
+  Person person;
+  person.prim
   return 0;
 }
