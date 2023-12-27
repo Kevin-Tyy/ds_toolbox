@@ -1,4 +1,5 @@
-# My Repository
+# DS Toolbox
+```⬆️⬆️ My collection of Structured Algorithms and Data Structures ⬆️⬆️```
 
 ## Description
 
