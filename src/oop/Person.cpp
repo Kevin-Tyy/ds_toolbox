@@ -18,8 +18,8 @@ public:
   //   cout << "Name is " << name << endl;
   // }
   void printSomething () {
-    cout << "Boo!"
-  }
+    cout << "Boo!";
+  };
 };
 
 int main() {
@@ -27,6 +27,6 @@ int main() {
   // person1.getDetails();
 
   Person person;
-  person.prim
+  person.printSomething();
   return 0;
 }
