@@ -24,13 +24,10 @@ namespace printer
     }
     cout << endl;
   }
-
 }
 
 int main()
 {
-
-
   Node *n1 = new Node(12);
   Node *n2 = new Node(14);
   Node *n3 = new Node(18);
@@ -41,6 +38,5 @@ int main()
   Node *head = n1;
 
   printer::printList(head);
-
   return 0;
 }
