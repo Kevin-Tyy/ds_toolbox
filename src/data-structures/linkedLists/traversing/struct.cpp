@@ -16,11 +16,13 @@ namespace printer
 {
   void printList(Node *head)
   {
-    while (head != NULL)
+    int i;
+    for (i = 0; head != NULL; i++)
     {
       cout << head->data << " ";
       head = head->next;
     }
+    cout << "Length:" << i;
     cout << endl;
   }
 }
